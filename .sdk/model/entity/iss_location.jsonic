@@ -1,0 +1,63 @@
+# Entity: iss_location
+
+main: kit: entity: iss_location: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "iss_position"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "message"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "timestamp"
+      req: true
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "iss_location"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/iss-now.json"
+          parts: [
+            "iss-now.json"
+          ]
+          select: {
+            exist: [
+              "callback"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

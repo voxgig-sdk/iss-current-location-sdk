@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+      }
+      description: "Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds."
+      servers: [
+        {
+          description: "Open Notify API Server"
+          url: "http://api.open-notify.org"
+        }
+      ]
+      title: "ISS Current Location"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

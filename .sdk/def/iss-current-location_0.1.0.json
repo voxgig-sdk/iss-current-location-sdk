@@ -1,0 +1,124 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ISS Current Location",
+    "description": "Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://api.open-notify.org",
+      "description": "Open Notify API Server"
+    }
+  ],
+  "paths": {
+    "/iss-now.json": {
+      "get": {
+        "summary": "Get current ISS location",
+        "description": "Returns the current location of the International Space Station including latitude, longitude, and timestamp. This endpoint should not be polled more frequently than once every 5 seconds.",
+        "operationId": "getIssLocation",
+        "parameters": [
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "Optional JSONP callback function name for cross-domain requests",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with current ISS location",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Status message indicating success",
+                      "example": "success"
+                    },
+                    "timestamp": {
+                      "type": "integer",
+                      "description": "Unix timestamp of when the location was recorded",
+                      "example": 1609459200
+                    },
+                    "iss_position": {
+                      "type": "object",
+                      "description": "Current position of the ISS",
+                      "properties": {
+                        "latitude": {
+                          "type": "string",
+                          "description": "Latitude coordinate of the ISS",
+                          "example": "45.0000"
+                        },
+                        "longitude": {
+                          "type": "string",
+                          "description": "Longitude coordinate of the ISS",
+                          "example": "-122.0000"
+                        }
+                      },
+                      "required": [
+                        "latitude",
+                        "longitude"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "timestamp",
+                    "iss_position"
+                  ]
+                },
+                "example": {
+                  "message": "success",
+                  "timestamp": 1609459200,
+                  "iss_position": {
+                    "latitude": "45.0000",
+                    "longitude": "-122.0000"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Error message",
+                      "example": "error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ISS Location"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "ISS Location",
+      "description": "Operations for retrieving the current location of the International Space Station"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation",
+    "url": "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+  }
+}

@@ -1,0 +1,28 @@
+# BasicIssLocationFlow
+
+main: kit: flow: BasicIssLocationFlow:
+{
+  entity: "iss_location",
+  kind: "basic",
+  name: "BasicIssLocationFlow",
+  step: [
+    {
+      input: {
+        ref: "iss_location_ref01",
+        srcdatavar: "iss_location_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-iss_location_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIssLocationFlow"
+}

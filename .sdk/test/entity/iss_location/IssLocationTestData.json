@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "iss_location": {
+      "ISS_LOCATION00": {
+        "iss_position": {},
+        "message": "s1f",
+        "timestamp": "s20"
+      },
+      "ISS_LOCATION01": {
+        "iss_position": {},
+        "message": "s3d",
+        "timestamp": "s3e"
+      },
+      "ISS_LOCATION02": {
+        "iss_position": {},
+        "message": "s5b",
+        "timestamp": "s5c"
+      }
+    }
+  },
+  "new": {
+    "iss_location": {
+      "iss_location_ref01": {
+        "iss_position": {},
+        "message": "s79",
+        "timestamp": "s7a"
+      }
+    }
+  }
+}
