@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/iss-current-location-sdk/core"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 )
 
 type BaseFeature struct {

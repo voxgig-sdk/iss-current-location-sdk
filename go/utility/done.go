@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/iss-current-location-sdk/core"
+import "github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

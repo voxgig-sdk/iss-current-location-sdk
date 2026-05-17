@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/iss-current-location-sdk"
+	sdk "github.com/voxgig-sdk/iss-current-location-sdk/go"
 )
 
 func TestExists(t *testing.T) {

@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/iss-current-location-sdk/core"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/iss-current-location-sdk"
-	"github.com/voxgig-sdk/iss-current-location-sdk/core"
+	sdk "github.com/voxgig-sdk/iss-current-location-sdk/go"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 )
 
 func TestIssLocationDirect(t *testing.T) {

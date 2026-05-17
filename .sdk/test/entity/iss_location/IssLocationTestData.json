@@ -4,17 +4,20 @@
       "ISS_LOCATION00": {
         "iss_position": {},
         "message": "s1f",
-        "timestamp": "s20"
+        "timestamp": "s20",
+        "id": "ISS_LOCATION00"
       },
       "ISS_LOCATION01": {
         "iss_position": {},
         "message": "s3d",
-        "timestamp": "s3e"
+        "timestamp": "s3e",
+        "id": "ISS_LOCATION01"
       },
       "ISS_LOCATION02": {
         "iss_position": {},
         "message": "s5b",
-        "timestamp": "s5c"
+        "timestamp": "s5c",
+        "id": "ISS_LOCATION02"
       }
     }
   },

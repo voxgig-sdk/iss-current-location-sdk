@@ -1,10 +1,10 @@
 package voxgigisscurrentlocationsdk
 
 import (
-	"github.com/voxgig-sdk/iss-current-location-sdk/core"
-	"github.com/voxgig-sdk/iss-current-location-sdk/entity"
-	"github.com/voxgig-sdk/iss-current-location-sdk/feature"
-	_ "github.com/voxgig-sdk/iss-current-location-sdk/utility"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/core"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/entity"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/feature"
+	_ "github.com/voxgig-sdk/iss-current-location-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

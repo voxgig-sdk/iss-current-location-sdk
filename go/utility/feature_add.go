@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/iss-current-location-sdk/core"
+import "github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

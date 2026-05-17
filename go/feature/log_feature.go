@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/iss-current-location-sdk/core"
+	"github.com/voxgig-sdk/iss-current-location-sdk/go/core"
 )
 
 type LogFeature struct {
