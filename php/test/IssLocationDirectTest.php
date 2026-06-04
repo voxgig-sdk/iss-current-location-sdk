@@ -67,14 +67,12 @@ function iss_location_direct_setup($mockres)
     $env = Runner::env_override([
         "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID" => [],
         "ISSCURRENTLOCATION_TEST_LIVE" => "FALSE",
-        "ISSCURRENTLOCATION_APIKEY" => "NONE",
     ]);
 
     $live = $env["ISSCURRENTLOCATION_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ISSCURRENTLOCATION_APIKEY"],
         ];
         $client = new IssCurrentLocationSDK($merged_opts);
         return [

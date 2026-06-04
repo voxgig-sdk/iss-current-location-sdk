@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from isscurrentlocation_sdk import IssCurrentLocationSDK
 
-client = IssCurrentLocationSDK({
-    "apikey": os.environ.get("ISS-CURRENT-LOCATION_APIKEY"),
-})
+client = IssCurrentLocationSDK({})
 ```
 
 ### 3. Load a isslocation
@@ -117,7 +114,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ISS-CURRENT-LOCATION_TEST_LIVE=TRUE
-ISS-CURRENT-LOCATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

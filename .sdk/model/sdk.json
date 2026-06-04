@@ -16,7 +16,17 @@
           }
         ],
         "title": "ISS Current Location",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Real-time latitude, longitude, and timestamp for the International Space Station",
+        "homepage": "http://open-notify.org/",
+        "docs_url": "http://open-notify.org/Open-Notify-API/ISS-Location-Now/",
+        "license_short": "Creative Commons Attribution 3.0 Unported (CC BY 3.0)",
+        "license_md": "- Open Notify documentation site is published under [CC BY 3.0 Unported](http://creativecommons.org/licenses/by/3.0/deed.en_US).\n- Underlying orbital data is derived from publicly-published NASA and NORAD Two-Line Element (TLE) sets.\n- No explicit terms apply to the JSON endpoint itself; treat the service as a best-effort community resource.\n- Attribute Open Notify when reusing the data or documentation.",
+        "about_md": "The [Open Notify](http://open-notify.org/) ISS Current Location API returns where the International Space Station is right now. It is a small, single-endpoint service originally built and maintained by Nathan Bergey as a hobby project that exposes ISS tracking data in a friendly JSON form.\n\nWhat you get from the API:\n\n- `GET /iss-now.json` returns a JSON object with `message`, a Unix `timestamp`, and an `iss_position` object containing `latitude` and `longitude` strings in decimal degrees.\n- JSONP is supported by appending a `?callback=...` query parameter.\n- The service takes no inputs and requires no authentication or API key.\n\nPosition is computed from a Two-Line Element set that Open Notify refreshes at least once a day from NASA spaceflight data (with Celestrak listed as an alternate source). Because TLE-based propagation has inherent uncertainty larger than one second, and the position is only recomputed once per second, the docs ask clients to poll no faster than once every five seconds.\n\nOperationally the host `api.open-notify.org` has had intermittent outages over the years, so production callers should expect occasional errors and back off accordingly. CORS is enabled, making the endpoint usable directly from browser JavaScript.",
+        "entity_desc": {
+          "iss_location": "The current position of the International Space Station, returned as `latitude`, `longitude`, and a Unix `timestamp` from `GET /iss-now.json` (JSONP available via `?callback=`)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +34,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "iss_location": {
