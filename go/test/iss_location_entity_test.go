@@ -117,6 +117,7 @@ func iss_locationBasicSetup(extra map[string]any) *entityTestSetup {
 		"ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID": idmap,
 		"ISSCURRENTLOCATION_TEST_LIVE":      "FALSE",
 		"ISSCURRENTLOCATION_TEST_EXPLAIN":   "FALSE",
+		"ISSCURRENTLOCATION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID"])
@@ -127,6 +128,7 @@ func iss_locationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ISSCURRENTLOCATION_APIKEY"],
 			},
 			extra,
 		})

@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "http://api.open-notify.org",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,42 +29,44 @@ def make_config():
       "iss_location": {
         "fields": [
           {
+            "active": True,
             "name": "iss_position",
             "req": True,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "message",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "timestamp",
             "req": True,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 2,
           },
         ],
         "name": "iss_location",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "callback",
                       "orig": "callback",
                       "reqd": False,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -79,11 +84,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

@@ -82,6 +82,7 @@ def iss_location_basic_setup(extra)
     "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID" => idmap,
     "ISSCURRENTLOCATION_TEST_LIVE" => "FALSE",
     "ISSCURRENTLOCATION_TEST_EXPLAIN" => "FALSE",
+    "ISSCURRENTLOCATION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +94,7 @@ def iss_location_basic_setup(extra)
   if env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["ISSCURRENTLOCATION_APIKEY"],
       },
       extra || {},
     ])

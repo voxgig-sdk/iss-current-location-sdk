@@ -1,22 +1,8 @@
 # IssCurrentLocation SDK
 
-Real-time latitude, longitude, and timestamp for the International Space Station
+ISS Current Location client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About ISS Current Location
-
-The [Open Notify](http://open-notify.org/) ISS Current Location API returns where the International Space Station is right now. It is a small, single-endpoint service originally built and maintained by Nathan Bergey as a hobby project that exposes ISS tracking data in a friendly JSON form.
-
-What you get from the API:
-
-- `GET /iss-now.json` returns a JSON object with `message`, a Unix `timestamp`, and an `iss_position` object containing `latitude` and `longitude` strings in decimal degrees.
-- JSONP is supported by appending a `?callback=...` query parameter.
-- The service takes no inputs and requires no authentication or API key.
-
-Position is computed from a Two-Line Element set that Open Notify refreshes at least once a day from NASA spaceflight data (with Celestrak listed as an alternate source). Because TLE-based propagation has inherent uncertainty larger than one second, and the position is only recomputed once per second, the docs ask clients to poll no faster than once every five seconds.
-
-Operationally the host `api.open-notify.org` has had intermittent outages over the years, so production callers should expect occasional errors and back off accordingly. CORS is enabled, making the endpoint usable directly from browser JavaScript.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install iss-current-location-sdk
 luarocks install iss-current-location-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { IssCurrentLocationSDK } from 'iss-current-location'
 
-const client = new IssCurrentLocationSDK({})
+const client = new IssCurrentLocationSDK({
+  apikey: process.env.ISS-CURRENT-LOCATION_APIKEY,
+})
 
+// Load isslocation data
+const isslocation = await client.IssLocation().load({})
+console.log(isslocation.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **IssLocation** | The current position of the International Space Station, returned as `latitude`, `longitude`, and a Unix `timestamp` from `GET /iss-now.json` (JSONP available via `?callback=`). | `/iss-now.json` |
+| **IssLocation** |  | `/iss-now.json` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from isscurrentlocation_sdk import IssCurrentLocationSDK
 
-client = IssCurrentLocationSDK({})
+client = IssCurrentLocationSDK({
+    "apikey": os.environ.get("ISS-CURRENT-LOCATION_APIKEY"),
+})
 
 
 # Load a specific isslocation
-isslocation, err = client.IssLocation(None).load(
-    {"id": "example_id"}, None
-)
+isslocation, err = client.IssLocation().load({"id": "example_id"})
+print(isslocation)
 ```
 
 ### PHP
@@ -127,13 +119,14 @@ isslocation, err = client.IssLocation(None).load(
 <?php
 require_once 'isscurrentlocation_sdk.php';
 
-$client = new IssCurrentLocationSDK([]);
+$client = new IssCurrentLocationSDK([
+    "apikey" => getenv("ISS-CURRENT-LOCATION_APIKEY"),
+]);
 
 
 // Load a specific isslocation
-[$isslocation, $err] = $client->IssLocation(null)->load(
-    ["id" => "example_id"], null
-);
+[$isslocation, $err] = $client->IssLocation()->load(["id" => "example_id"]);
+print_r($isslocation);
 ```
 
 ### Golang
@@ -141,8 +134,13 @@ $client = new IssCurrentLocationSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/iss-current-location-sdk/go"
 
-client := sdk.NewIssCurrentLocationSDK(map[string]any{})
+client := sdk.NewIssCurrentLocationSDK(map[string]any{
+    "apikey": os.Getenv("ISS-CURRENT-LOCATION_APIKEY"),
+})
 
+// Load isslocation data
+isslocation, err := client.IssLocation(nil).Load(map[string]any{}, nil)
+fmt.Println(isslocation)
 ```
 
 ### Ruby
@@ -150,13 +148,14 @@ client := sdk.NewIssCurrentLocationSDK(map[string]any{})
 ```ruby
 require_relative "IssCurrentLocation_sdk"
 
-client = IssCurrentLocationSDK.new({})
+client = IssCurrentLocationSDK.new({
+  "apikey" => ENV["ISS-CURRENT-LOCATION_APIKEY"],
+})
 
 
 # Load a specific isslocation
-isslocation, err = client.IssLocation(nil).load(
-  { "id" => "example_id" }, nil
-)
+isslocation, err = client.IssLocation().load({ "id" => "example_id" })
+puts isslocation
 ```
 
 ### Lua
@@ -164,13 +163,14 @@ isslocation, err = client.IssLocation(nil).load(
 ```lua
 local sdk = require("iss-current-location_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ISS-CURRENT-LOCATION_APIKEY"),
+})
 
 
 -- Load a specific isslocation
-local isslocation, err = client:IssLocation(nil):load(
-  { id = "example_id" }, nil
-)
+local isslocation, err = client:IssLocation():load({ id = "example_id" })
+print(isslocation)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +189,21 @@ const result = await client.IssLocation().load({ id: 'test01' })
 ### Python
 
 ```python
-client = IssCurrentLocationSDK.test(None, None)
-result, err = client.IssLocation(None).load(
-    {"id": "test01"}, None
-)
+client = IssCurrentLocationSDK.test()
+result, err = client.IssLocation().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = IssCurrentLocationSDK::test(null, null);
-[$result, $err] = $client->IssLocation(null)->load(
-    ["id" => "test01"], null
-);
+$client = IssCurrentLocationSDK::test();
+[$result, $err] = $client->IssLocation()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.IssLocation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +212,15 @@ result, err := client.IssLocation(nil).Load(
 ### Ruby
 
 ```ruby
-client = IssCurrentLocationSDK.test(nil, nil)
-result, err = client.IssLocation(nil).load(
-  { "id" => "test01" }, nil
-)
+client = IssCurrentLocationSDK.test
+result, err = client.IssLocation().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:IssLocation(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:IssLocation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,16 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the ISS Current Location
-
-- Upstream: [http://open-notify.org/](http://open-notify.org/)
-- API docs: [http://open-notify.org/Open-Notify-API/ISS-Location-Now/](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
-
-- Open Notify documentation site is published under [CC BY 3.0 Unported](http://creativecommons.org/licenses/by/3.0/deed.en_US).
-- Underlying orbital data is derived from publicly-published NASA and NORAD Two-Line Element (TLE) sets.
-- No explicit terms apply to the JSON endpoint itself; treat the service as a best-effort community resource.
-- Attribute Open Notify when reusing the data or documentation.
 
 ---
 

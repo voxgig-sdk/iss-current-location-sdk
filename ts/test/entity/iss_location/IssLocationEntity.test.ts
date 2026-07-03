@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID': idmap,
     'ISS_CURRENT_LOCATION_TEST_LIVE': 'FALSE',
     'ISS_CURRENT_LOCATION_TEST_EXPLAIN': 'FALSE',
+    'ISS_CURRENT_LOCATION_APIKEY': 'NONE',
   })
 
   idmap = env['ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new IssCurrentLocationSDK(merge([
       {
+        apikey: env.ISS_CURRENT_LOCATION_APIKEY,
       },
       extra
     ]))

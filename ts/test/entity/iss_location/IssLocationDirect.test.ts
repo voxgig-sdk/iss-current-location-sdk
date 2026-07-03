@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID': {},
     'ISSCURRENTLOCATION_TEST_LIVE': 'FALSE',
+    'ISSCURRENTLOCATION_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ISSCURRENTLOCATION_TEST_LIVE
 
   if (live) {
     const client = new IssCurrentLocationSDK({
+      apikey: env.ISSCURRENTLOCATION_APIKEY,
     })
 
     let idmap: any = env['ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID']
