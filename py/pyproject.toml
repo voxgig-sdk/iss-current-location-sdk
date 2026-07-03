@@ -5,16 +5,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "voxgig-sdk-iss-current-location"
 version = "0.0.1"
-description = "IssCurrentLocation SDK for Python"
+description = "Unofficial generated Python SDK for the ISS Current Location public API. Not affiliated with or endorsed by the upstream API provider."
+readme = "README.md"
 license = "MIT"
 requires-python = ">=3.8"
+keywords = ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "iss-current-location"]
 dependencies = [
-    "requests>=2.33",
     "requests>=2.33",
 ]
 
 [project.urls]
-Homepage = "https://github.com/voxgig/iss-current-location-sdk"
+Homepage = "https://github.com/voxgig-sdk/iss-current-location-sdk"
+Repository = "https://github.com/voxgig-sdk/iss-current-location-sdk"
+Issues = "https://github.com/voxgig-sdk/iss-current-location-sdk/issues"
 
 # Explicit package list — setuptools auto-discovery refuses to pick when
 # multiple top-level dirs (core/entity/feature/utility) are present.

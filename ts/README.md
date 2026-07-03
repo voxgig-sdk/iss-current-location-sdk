@@ -10,7 +10,7 @@ The TypeScript SDK for the IssCurrentLocation API — a type-safe, entity-orient
 
 ## Install
 ```bash
-npm install iss-current-location
+npm install @voxgig-sdk/iss-current-location
 ```
 ## Tutorial: your first API call
 

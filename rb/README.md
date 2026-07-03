@@ -10,13 +10,13 @@ The Ruby SDK for the IssCurrentLocation API — an entity-oriented client using 
 
 ## Install
 ```bash
-gem install iss-current-location-sdk
+gem install voxgig-sdk-iss-current-location
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "iss-current-location-sdk"
+gem "voxgig-sdk-iss-current-location"
 ```
 
 Then run:

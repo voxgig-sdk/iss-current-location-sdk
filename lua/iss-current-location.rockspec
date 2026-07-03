@@ -8,12 +8,14 @@ source = {
   dir = "iss-current-location-sdk/lua"
 }
 description = {
-  summary = "IssCurrentLocation SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the ISS Current Location public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/iss-current-location-sdk",
+  issues_url = "https://github.com/voxgig-sdk/iss-current-location-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "iss-current-location" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

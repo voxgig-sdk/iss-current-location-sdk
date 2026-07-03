@@ -10,7 +10,7 @@ The Python SDK for the IssCurrentLocation API — an entity-oriented client foll
 
 ## Install
 ```bash
-pip install iss-current-location-sdk
+pip install voxgig-sdk-iss-current-location
 ```
 
 Or install from source:

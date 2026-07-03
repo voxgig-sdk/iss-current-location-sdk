@@ -10,7 +10,7 @@ The Lua SDK for the IssCurrentLocation API — an entity-oriented client using L
 
 ## Install
 ```bash
-luarocks install iss-current-location-sdk
+luarocks install voxgig-sdk-iss-current-location
 ```
 
 If the module is not yet published, add the source directory to

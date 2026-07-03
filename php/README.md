@@ -10,7 +10,7 @@ The PHP SDK for the IssCurrentLocation API — an entity-oriented client using P
 
 ## Install
 ```bash
-composer require voxgig/iss-current-location-sdk
+composer require voxgig-sdk/iss-current-location
 ```
 
 
