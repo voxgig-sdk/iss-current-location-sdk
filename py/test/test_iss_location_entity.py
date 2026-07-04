@@ -49,8 +49,7 @@ class TestIssLocationEntity:
         # LOAD
         iss_location_ref01_ent = client.IssLocation(None)
         iss_location_ref01_match_dt0 = {}
-        iss_location_ref01_data_dt0_loaded, err = iss_location_ref01_ent.load(iss_location_ref01_match_dt0, None)
-        assert err is None
+        iss_location_ref01_data_dt0_loaded = iss_location_ref01_ent.load(iss_location_ref01_match_dt0, None)
         assert iss_location_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _iss_location_basic_setup(extra):
         "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID": idmap,
         "ISSCURRENTLOCATION_TEST_LIVE": "FALSE",
         "ISSCURRENTLOCATION_TEST_EXPLAIN": "FALSE",
-        "ISSCURRENTLOCATION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _iss_location_basic_setup(extra):
     if env.get("ISSCURRENTLOCATION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ISSCURRENTLOCATION_APIKEY"),
             },
             extra or {},
         ])

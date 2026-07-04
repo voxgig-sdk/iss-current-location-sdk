@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `IssCurrentLocationSDK.test()`.
 ## IssLocationEntity
 
 ```ts
-const iss_location = client.IssLocation()
+const iss_location = client.iss_location
 ```
 
 ### Fields
@@ -128,7 +127,7 @@ const iss_location = client.IssLocation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IssLocation().load({ id: 'iss_location_id' })
+const result = await client.iss_location.load({ id: 'iss_location_id' })
 ```
 
 ### Common Methods

@@ -245,6 +245,9 @@ func (sdk *IssCurrentLocationSDK) Direct(fetchargs map[string]any) (map[string]a
 }
 
 
+// IssLocation returns a IssLocation entity bound to this client.
+// Idiomatic usage: client.IssLocation(nil).List(nil, nil) or
+// client.IssLocation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *IssCurrentLocationSDK) IssLocation(data map[string]any) IssCurrentLocationEntity {
 	return NewIssLocationEntityFunc(sdk, data)
 }

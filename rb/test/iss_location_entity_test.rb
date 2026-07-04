@@ -42,8 +42,7 @@ class IssLocationEntityTest < Minitest::Test
     # LOAD
     iss_location_ref01_ent = client.IssLocation(nil)
     iss_location_ref01_match_dt0 = {}
-    iss_location_ref01_data_dt0_loaded, err = iss_location_ref01_ent.load(iss_location_ref01_match_dt0, nil)
-    assert_nil err
+    iss_location_ref01_data_dt0_loaded = iss_location_ref01_ent.load(iss_location_ref01_match_dt0, nil)
     assert !iss_location_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def iss_location_basic_setup(extra)
     "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID" => idmap,
     "ISSCURRENTLOCATION_TEST_LIVE" => "FALSE",
     "ISSCURRENTLOCATION_TEST_EXPLAIN" => "FALSE",
-    "ISSCURRENTLOCATION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def iss_location_basic_setup(extra)
   if env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ISSCURRENTLOCATION_APIKEY"],
       },
       extra || {},
     ])

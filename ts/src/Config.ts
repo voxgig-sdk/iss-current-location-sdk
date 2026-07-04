@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'http://api.open-notify.org',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

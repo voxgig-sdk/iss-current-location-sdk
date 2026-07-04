@@ -99,14 +99,12 @@ func iss_locationDirectSetup(mockres any) *iss_locationDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID": map[string]any{},
 		"ISSCURRENTLOCATION_TEST_LIVE":    "FALSE",
-		"ISSCURRENTLOCATION_APIKEY":       "NONE",
 	})
 
 	live := env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ISSCURRENTLOCATION_APIKEY"],
 		}
 		client := sdk.NewIssCurrentLocationSDK(mergedOpts)
 

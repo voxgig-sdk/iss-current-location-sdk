@@ -2,6 +2,8 @@
 
 import { IssLocationEntity } from './entity/IssLocationEntity'
 
+export type * from './IssCurrentLocationTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class IssCurrentLocationSDK {
 
 
 
+  _iss_location?: IssLocationEntity
+
+  // Idiomatic facade: `client.iss_location.list()` / `client.iss_location.load({ id })`.
+  get iss_location(): IssLocationEntity {
+    return (this._iss_location ??= new IssLocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.iss_location` instead. */
   IssLocation(data?: any) {
     const self = this
     return new IssLocationEntity(self,data)

@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:iss_location():list() / client:iss_location():load({ id = ... })
+function IssCurrentLocationSDK:iss_location(data)
+  local EntityMod = require("entity.iss_location_entity")
+  if data == nil then
+    if self._iss_location == nil then
+      self._iss_location = EntityMod.new(self, nil)
+    end
+    return self._iss_location
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:iss_location() instead.
 function IssCurrentLocationSDK:IssLocation(data)
   local EntityMod = require("entity.iss_location_entity")
   return EntityMod.new(self, data)

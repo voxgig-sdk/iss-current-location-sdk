@@ -9,9 +9,12 @@ The TypeScript SDK for the IssCurrentLocation API — a type-safe, entity-orient
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/iss-current-location
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/iss-current-location-sdk/releases](https://github.com/voxgig-sdk/iss-current-location-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IssCurrentLocationSDK } from 'iss-current-location'
+import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
 
-const client = new IssCurrentLocationSDK({
-  apikey: process.env.ISS-CURRENT-LOCATION_APIKEY,
-})
+const client = new IssCurrentLocationSDK()
 ```
 
-### 3. Load a isslocation
+### 3. Load an isslocation
 
 ```ts
-const result = await client.IssLocation().load({ id: 'example_id' })
+const result = await client.isslocation.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = IssCurrentLocationSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.isslocation.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new IssCurrentLocationSDK({ apikey: '...' })
+const client = new IssCurrentLocationSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.isslocation
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new IssCurrentLocationSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new IssCurrentLocationSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ISS-CURRENT-LOCATION_TEST_LIVE=TRUE
-ISS-CURRENT-LOCATION_APIKEY=<your-key>
+ISS_CURRENT_LOCATION_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new IssCurrentLocationSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new IssCurrentLocationSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -268,7 +265,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `const iss_location = client.IssLocation()`
+Create an instance: `const iss_location = client.iss_location`
 
 #### Operations
 
@@ -287,7 +284,7 @@ Create an instance: `const iss_location = client.IssLocation()`
 #### Example: Load
 
 ```ts
-const iss_location = await client.IssLocation().load({ id: 'iss_location_id' })
+const iss_location = await client.iss_location.load({ id: 'iss_location_id' })
 ```
 
 
@@ -348,7 +345,7 @@ iss-current-location/
 Import the SDK from the package root:
 
 ```ts
-import { IssCurrentLocationSDK } from 'iss-current-location'
+import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
 ```
 
 ### Entity state
@@ -358,11 +355,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const isslocation = client.isslocation
+await isslocation.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// isslocation.data() now returns the loaded isslocation data
+// isslocation.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

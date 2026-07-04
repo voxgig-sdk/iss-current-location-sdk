@@ -49,8 +49,7 @@ class IssLocationEntityTest extends TestCase
         // LOAD
         $iss_location_ref01_ent = $client->IssLocation(null);
         $iss_location_ref01_match_dt0 = [];
-        [$iss_location_ref01_data_dt0_loaded, $err] = $iss_location_ref01_ent->load($iss_location_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $iss_location_ref01_data_dt0_loaded = $iss_location_ref01_ent->load($iss_location_ref01_match_dt0, null);
         $this->assertNotNull($iss_location_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function iss_location_basic_setup($extra)
         "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID" => $idmap,
         "ISSCURRENTLOCATION_TEST_LIVE" => "FALSE",
         "ISSCURRENTLOCATION_TEST_EXPLAIN" => "FALSE",
-        "ISSCURRENTLOCATION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function iss_location_basic_setup($extra)
     if ($env["ISSCURRENTLOCATION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ISSCURRENTLOCATION_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  IssLocation,
+  IssLocationLoadMatch,
+} from '../IssCurrentLocationTypes'
 
 // TODO: needs Entity superclass
-class IssLocationEntity extends IssCurrentLocationEntityBase {
+class IssLocationEntity extends IssCurrentLocationEntityBase<IssLocation> {
 
   constructor(client: IssCurrentLocationSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class IssLocationEntity extends IssCurrentLocationEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: IssLocationLoadMatch, ctrl?: Control): Promise<IssLocation> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class IssLocationEntity extends IssCurrentLocationEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<IssLocation> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

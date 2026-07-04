@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         url: "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
       }

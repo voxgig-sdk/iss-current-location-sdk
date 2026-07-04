@@ -62,14 +62,12 @@ function iss_location_direct_setup(mockres)
   local env = runner.env_override({
     ["ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID"] = {},
     ["ISSCURRENTLOCATION_TEST_LIVE"] = "FALSE",
-    ["ISSCURRENTLOCATION_APIKEY"] = "NONE",
   })
 
   local live = env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ISSCURRENTLOCATION_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

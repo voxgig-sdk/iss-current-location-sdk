@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch IssLocationLoadMatch
+---@param ctrl? table
+---@return IssLocation
+---@return string? err
 function IssLocationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
