@@ -26,9 +26,9 @@ import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
 
 const client = new IssCurrentLocationSDK()
 
-// Load isslocation data
-const isslocation = await client.isslocation.load({})
-console.log(isslocation.data)
+// Load isslocation data (returns a IssLocation)
+const isslocation = await client.IssLocation().load()
+console.log(isslocation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from isscurrentlocation_sdk import IssCurrentLocationSDK
 client = IssCurrentLocationSDK()
 
 
-# Load a specific isslocation
-isslocation = client.isslocation.load({"id": "example_id"})
+# Load a specific isslocation (returns the record, raises on error)
+isslocation = client.IssLocation().load({"id": "example_id"})
 print(isslocation)
 ```
 
@@ -98,8 +98,8 @@ require_once 'isscurrentlocation_sdk.php';
 $client = new IssCurrentLocationSDK();
 
 
-// Load a specific isslocation
-$isslocation = $client->isslocation()->load(["id" => "example_id"]);
+// Load a specific isslocation (returns the bare record; throws on error)
+$isslocation = $client->IssLocation()->load(["id" => "example_id"]);
 print_r($isslocation);
 ```
 
@@ -123,8 +123,8 @@ require_relative "IssCurrentLocation_sdk"
 client = IssCurrentLocationSDK.new
 
 
-# Load a specific isslocation
-isslocation = client.isslocation.load({ "id" => "example_id" })
+# Load a specific isslocation (returns the bare record; raises on error)
+isslocation = client.IssLocation.load({ "id" => "example_id" })
 puts isslocation
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific isslocation
-local isslocation, err = client:isslocation():load({ id = "example_id" })
+local isslocation, err = client:IssLocation():load({ id = "example_id" })
 print(isslocation)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = IssCurrentLocationSDK.test()
-const result = await client.isslocation.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const isslocation = await client.IssLocation().load({ id: 'test01' })
+// isslocation is a bare IssLocation populated with mock data
+console.log(isslocation)
 ```
 
 ### Python
 
 ```python
 client = IssCurrentLocationSDK.test()
-result = client.isslocation.load({"id": "test01"})
+isslocation = client.IssLocation().load({"id": "test01"})
+print(isslocation)
 ```
 
 ### PHP
 
 ```php
-$client = IssCurrentLocationSDK::test();
-$result = $client->isslocation()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = IssCurrentLocationSDK::test([
+    "entity" => ["isslocation" => ["test01" => ["id" => "test01"]]],
+]);
+$isslocation = $client->IssLocation()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.IssLocation(nil).Load(
 ### Ruby
 
 ```ruby
-client = IssCurrentLocationSDK.test
-result = client.isslocation.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = IssCurrentLocationSDK.test({
+  "entity" => { "isslocation" => { "test01" => { "id" => "test01" } } },
+})
+isslocation = client.IssLocation.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:isslocation():load({ id = "test01" })
+local result, err = client:IssLocation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

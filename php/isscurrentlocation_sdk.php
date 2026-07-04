@@ -233,10 +233,10 @@ class IssCurrentLocationSDK
 
     private $_iss_location = null;
 
-    // Idiomatic facade: $client->iss_location()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias IssLocation() (PHP method
-    // names are case-insensitive).
-    public function iss_location($data = null)
+    // Canonical facade: $client->IssLocation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->iss_location()
+    // resolves here too.
+    public function IssLocation($data = null)
     {
         require_once __DIR__ . '/entity/iss_location_entity.php';
         if ($data === null) {

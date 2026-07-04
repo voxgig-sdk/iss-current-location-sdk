@@ -33,10 +33,12 @@ client = IssCurrentLocationSDK()
 
 ### 3. Load an isslocation
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.isslocation.load({"id": "example_id"})
-    print(result)
+    isslocation = client.IssLocation().load({"id": "example_id"})
+    print(isslocation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IssCurrentLocationSDK.test()
 
-result = client.isslocation.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+isslocation = client.IssLocation().load({"id": "test01"})
+# isslocation contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `IssLocation` | `(data) -> IssLocationEntity` | Create a IssLocation entity instance. |
+| `IssLocation` | `(data) -> IssLocationEntity` | Create an IssLocation entity instance. |
 
 ### Entity interface
 
@@ -220,7 +223,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `const iss_location = client.iss_location`
+Create an instance: `iss_location = client.IssLocation()`
 
 #### Operations
 
@@ -238,8 +241,8 @@ Create an instance: `const iss_location = client.iss_location`
 
 #### Example: Load
 
-```ts
-const iss_location = await client.iss_location.load({ id: 'iss_location_id' })
+```python
+iss_location = client.IssLocation().load({"id": "iss_location_id"})
 ```
 
 
@@ -313,7 +316,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-isslocation = client.isslocation
+isslocation = client.IssLocation()
 isslocation.load({"id": "example_id"})
 
 # isslocation.data_get() now returns the loaded isslocation data

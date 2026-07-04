@@ -109,7 +109,7 @@ Alias for `IssCurrentLocationSDK.test()`.
 ## IssLocationEntity
 
 ```ts
-const iss_location = client.iss_location
+const iss_location = client.IssLocation()
 ```
 
 ### Fields
@@ -127,7 +127,7 @@ const iss_location = client.iss_location
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.iss_location.load({ id: 'iss_location_id' })
+const result = await client.IssLocation().load({ id: 'iss_location_id' })
 ```
 
 ### Common Methods

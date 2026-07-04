@@ -208,13 +208,7 @@ class IssCurrentLocationSDK
   end
 
 
-  # Idiomatic facade: client.iss_location.list / client.iss_location.load({ "id" => ... })
-  def iss_location
-    require_relative 'entity/iss_location_entity'
-    @iss_location ||= IssLocationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.iss_location instead.
+  # Canonical facade: client.IssLocation.list / client.IssLocation.load({ "id" => ... })
   def IssLocation(data = nil)
     require_relative 'entity/iss_location_entity'
     IssLocationEntity.new(self, data)

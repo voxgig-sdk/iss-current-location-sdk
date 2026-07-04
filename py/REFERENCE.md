@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## IssLocationEntity
 
 ```python
-iss_location = client.iss_location
+iss_location = client.IssLocation()
 ```
 
 ### Fields
@@ -98,7 +98,7 @@ iss_location = client.iss_location
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.iss_location.load({"id": "iss_location_id"})
+result = client.IssLocation().load({"id": "iss_location_id"})
 ```
 
 ### Common Methods

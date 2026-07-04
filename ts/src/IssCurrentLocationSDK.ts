@@ -204,14 +204,7 @@ class IssCurrentLocationSDK {
 
 
 
-  _iss_location?: IssLocationEntity
-
-  // Idiomatic facade: `client.iss_location.list()` / `client.iss_location.load({ id })`.
-  get iss_location(): IssLocationEntity {
-    return (this._iss_location ??= new IssLocationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.iss_location` instead. */
+  // Entity access: `client.IssLocation().list()` / `client.IssLocation().load({ id })`.
   IssLocation(data?: any) {
     const self = this
     return new IssLocationEntity(self,data)

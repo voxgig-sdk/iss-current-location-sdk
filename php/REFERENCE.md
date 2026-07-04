@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## IssLocationEntity
 
 ```php
-$iss_location = $client->iss_location();
+$iss_location = $client->IssLocation();
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ $iss_location = $client->iss_location();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->iss_location()->load(["id" => "iss_location_id"]);
+$result = $client->IssLocation()->load(["id" => "iss_location_id"]);
 ```
 
 ### Common Methods

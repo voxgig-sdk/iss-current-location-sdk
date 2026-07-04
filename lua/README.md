@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an isslocation
 
 ```lua
-local result, err = client:isslocation():load({ id = "example_id" })
+local isslocation, err = client:IssLocation():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(isslocation)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:isslocation():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:IssLocation():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,7 +161,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `IssLocation` | `(data) -> IssLocationEntity` | Create a IssLocation entity instance. |
+| `IssLocation` | `(data) -> IssLocationEntity` | Create an IssLocation entity instance. |
 
 ### Entity interface
 
@@ -183,17 +183,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local iss_location, err = client:IssLocation():load({ id = "example_id" })
+    if err then error(err) end
+    -- iss_location is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -216,7 +221,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `const iss_location = client.iss_location`
+Create an instance: `local iss_location = client:IssLocation(nil)`
 
 #### Operations
 
@@ -234,8 +239,8 @@ Create an instance: `const iss_location = client.iss_location`
 
 #### Example: Load
 
-```ts
-const iss_location = await client.iss_location.load({ id: 'iss_location_id' })
+```lua
+local iss_location, err = client:IssLocation():load({ id = "iss_location_id" })
 ```
 
 
@@ -310,7 +315,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local isslocation = client:isslocation()
+local isslocation = client:IssLocation()
 isslocation:load({ id = "example_id" })
 
 -- isslocation:data_get() now returns the loaded isslocation data

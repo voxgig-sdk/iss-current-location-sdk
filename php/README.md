@@ -33,9 +33,10 @@ $client = new IssCurrentLocationSDK();
 
 ```php
 try {
-    $result = $client->isslocation()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare IssLocation record (throws on error).
+    $isslocation = $client->IssLocation()->load(["id" => "example_id"]);
+    print_r($isslocation);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = IssCurrentLocationSDK::test();
+$client = IssCurrentLocationSDK::test([
+    "entity" => ["isslocation" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->isslocation()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$isslocation = $client->IssLocation()->load(["id" => "test01"]);
+print_r($isslocation);
 ```
 
 ### Use a custom fetch function
@@ -166,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `IssLocation` | `($data): IssLocationEntity` | Create a IssLocation entity instance. |
+| `IssLocation` | `($data): IssLocationEntity` | Create an IssLocation entity instance. |
 
 ### Entity interface
 
@@ -225,7 +230,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `const iss_location = client.iss_location`
+Create an instance: `$iss_location = $client->IssLocation();`
 
 #### Operations
 
@@ -243,8 +248,9 @@ Create an instance: `const iss_location = client.iss_location`
 
 #### Example: Load
 
-```ts
-const iss_location = await client.iss_location.load({ id: 'iss_location_id' })
+```php
+// load() returns the bare IssLocation record (throws on error).
+$iss_location = $client->IssLocation()->load(["id" => "iss_location_id"]);
 ```
 
 
@@ -319,7 +325,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$isslocation = $client->isslocation();
+$isslocation = $client->IssLocation();
 $isslocation->load(["id" => "example_id"]);
 
 // $isslocation->dataGet() now returns the loaded isslocation data

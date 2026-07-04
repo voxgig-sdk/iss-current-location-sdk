@@ -32,8 +32,9 @@ client = IssCurrentLocationSDK.new
 
 ```ruby
 begin
-  result = client.isslocation.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare IssLocation record (raises on error).
+  isslocation = client.IssLocation.load({ "id" => "example_id" })
+  puts isslocation
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = IssCurrentLocationSDK.test
+client = IssCurrentLocationSDK.test({
+  "entity" => { "isslocation" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.isslocation.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+isslocation = client.IssLocation.load({ "id" => "test01" })
+puts isslocation
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `IssLocation` | `(data) -> IssLocationEntity` | Create a IssLocation entity instance. |
+| `IssLocation` | `(data) -> IssLocationEntity` | Create an IssLocation entity instance. |
 
 ### Entity interface
 
@@ -220,7 +225,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `const iss_location = client.iss_location`
+Create an instance: `iss_location = client.IssLocation`
 
 #### Operations
 
@@ -238,8 +243,9 @@ Create an instance: `const iss_location = client.iss_location`
 
 #### Example: Load
 
-```ts
-const iss_location = await client.iss_location.load({ id: 'iss_location_id' })
+```ruby
+# load returns the bare IssLocation record (raises on error).
+iss_location = client.IssLocation.load({ "id" => "iss_location_id" })
 ```
 
 
@@ -314,7 +320,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-isslocation = client.isslocation
+isslocation = client.IssLocation
 isslocation.load({ "id" => "example_id" })
 
 # isslocation.data_get now returns the loaded isslocation data

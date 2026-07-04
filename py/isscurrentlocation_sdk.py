@@ -220,25 +220,15 @@ class IssCurrentLocationSDK:
         }
 
 
-    @property
-    def iss_location(self):
-        """Idiomatic facade: client.iss_location.list() / client.iss_location.load({"id": ...})."""
-        from entity.iss_location_entity import IssLocationEntity
-        cached = getattr(self, "_iss_location", None)
-        if cached is None:
-            cached = IssLocationEntity(self, None)
-            self._iss_location = cached
-        return cached
-
-    def IssLocation(self, data=None):
-        # Deprecated: use client.iss_location instead.
+    def IssLocation(self, data=None) -> "IssLocationEntity":
+        """Entity factory: client.IssLocation().list({}) / client.IssLocation().load({"id": ...})."""
         from entity.iss_location_entity import IssLocationEntity
         return IssLocationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "IssCurrentLocationSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class IssCurrentLocationSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.iss_location_entity import IssLocationEntity

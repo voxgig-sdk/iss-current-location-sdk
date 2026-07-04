@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## IssLocationEntity
 
 ```ruby
-iss_location = client.iss_location
+iss_location = client.IssLocation
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ iss_location = client.iss_location
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.iss_location.load({ "id" => "iss_location_id" })
+result = client.IssLocation.load({ "id" => "iss_location_id" })
 ```
 
 ### Common Methods

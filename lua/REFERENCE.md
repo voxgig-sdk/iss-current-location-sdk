@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## IssLocationEntity
 
 ```lua
-local iss_location = client:iss_location(nil)
+local iss_location = client:IssLocation(nil)
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ local iss_location = client:iss_location(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:iss_location():load({ id = "iss_location_id" })
+local result, err = client:IssLocation():load({ id = "iss_location_id" })
 ```
 
 ### Common Methods
