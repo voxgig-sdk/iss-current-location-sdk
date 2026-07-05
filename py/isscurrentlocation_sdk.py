@@ -221,7 +221,7 @@ class IssCurrentLocationSDK:
 
 
     def IssLocation(self, data=None) -> "IssLocationEntity":
-        """Entity factory: client.IssLocation().list({}) / client.IssLocation().load({"id": ...})."""
+        """Entity factory: client.IssLocation().list() / client.IssLocation().load({"id": ...})."""
         from entity.iss_location_entity import IssLocationEntity
         return IssLocationEntity(self, data)
 

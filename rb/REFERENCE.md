@@ -8,7 +8,7 @@ Complete API reference for the IssCurrentLocation Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'iss-current-location_sdk'
+require_relative 'IssCurrentLocation_sdk'
 
 client = IssCurrentLocationSDK.new(options)
 ```
@@ -93,9 +93,9 @@ iss_location = client.IssLocation
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | ``$OBJECT`` | Yes |  |
-| `message` | ``$STRING`` | Yes |  |
-| `timestamp` | ``$INTEGER`` | Yes |  |
+| `iss_position` | `Hash` | Yes |  |
+| `message` | `String` | Yes |  |
+| `timestamp` | `Integer` | Yes |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ iss_location = client.IssLocation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.IssLocation.load({ "id" => "iss_location_id" })
+result = client.IssLocation.load()
 ```
 
 ### Common Methods

@@ -116,9 +116,9 @@ const iss_location = client.IssLocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | ``$OBJECT`` | Yes |  |
-| `message` | ``$STRING`` | Yes |  |
-| `timestamp` | ``$INTEGER`` | Yes |  |
+| `iss_position` | `Record<string, any>` | Yes |  |
+| `message` | `string` | Yes |  |
+| `timestamp` | `number` | Yes |  |
 
 ### Operations
 
@@ -127,7 +127,7 @@ const iss_location = client.IssLocation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IssLocation().load({ id: 'iss_location_id' })
+const result = await client.IssLocation().load()
 ```
 
 ### Common Methods

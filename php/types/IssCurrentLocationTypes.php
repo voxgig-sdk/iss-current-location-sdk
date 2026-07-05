@@ -20,7 +20,7 @@ class IssLocation
     public int $timestamp;
 }
 
-/** Match filter for IssLocation#load (any subset of IssLocation fields). */
+/** Request payload for IssLocation#load. */
 class IssLocationLoadMatch
 {
     public ?array $iss_position = null;

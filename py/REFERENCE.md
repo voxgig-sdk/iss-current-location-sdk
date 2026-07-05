@@ -8,7 +8,7 @@ Complete API reference for the IssCurrentLocation Python SDK.
 ### Constructor
 
 ```python
-from iss-current-location_sdk import IssCurrentLocationSDK
+from isscurrentlocation_sdk import IssCurrentLocationSDK
 
 client = IssCurrentLocationSDK(options)
 ```
@@ -87,9 +87,9 @@ iss_location = client.IssLocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | ``$OBJECT`` | Yes |  |
-| `message` | ``$STRING`` | Yes |  |
-| `timestamp` | ``$INTEGER`` | Yes |  |
+| `iss_position` | `dict` | Yes |  |
+| `message` | `str` | Yes |  |
+| `timestamp` | `int` | Yes |  |
 
 ### Operations
 
@@ -98,7 +98,7 @@ iss_location = client.IssLocation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.IssLocation().load({"id": "iss_location_id"})
+result = client.IssLocation().load()
 ```
 
 ### Common Methods

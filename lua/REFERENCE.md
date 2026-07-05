@@ -90,9 +90,9 @@ local iss_location = client:IssLocation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | ``$OBJECT`` | Yes |  |
-| `message` | ``$STRING`` | Yes |  |
-| `timestamp` | ``$INTEGER`` | Yes |  |
+| `iss_position` | `table` | Yes |  |
+| `message` | `string` | Yes |  |
+| `timestamp` | `number` | Yes |  |
 
 ### Operations
 
@@ -101,7 +101,7 @@ local iss_location = client:IssLocation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IssLocation():load({ id = "iss_location_id" })
+local result, err = client:IssLocation():load()
 ```
 
 ### Common Methods

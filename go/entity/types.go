@@ -15,8 +15,7 @@ type IssLocation struct {
 	Timestamp int `json:"timestamp"`
 }
 
-// IssLocationLoadMatch mirrors the iss_location fields as an all-optional match
-// filter (Go analog of Partial<IssLocation>).
+// IssLocationLoadMatch is the typed request payload for IssLocation.LoadTyped.
 type IssLocationLoadMatch struct {
 	IssPosition *map[string]any `json:"iss_position,omitempty"`
 	Message *string `json:"message,omitempty"`

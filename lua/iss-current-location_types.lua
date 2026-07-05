@@ -12,6 +12,9 @@
 ---@field timestamp number
 
 ---@class IssLocationLoadMatch
+---@field iss_position? table
+---@field message? string
+---@field timestamp? number
 
 local M = {}
 

@@ -11,5 +11,9 @@ export interface IssLocation {
   timestamp: number
 }
 
-export type IssLocationLoadMatch = Partial<IssLocation>
+export interface IssLocationLoadMatch {
+  iss_position?: Record<string, any>
+  message?: string
+  timestamp?: number
+}
 

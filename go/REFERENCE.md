@@ -97,9 +97,9 @@ iss_location := client.IssLocation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | ``$OBJECT`` | Yes |  |
-| `message` | ``$STRING`` | Yes |  |
-| `timestamp` | ``$INTEGER`` | Yes |  |
+| `iss_position` | `map[string]any` | Yes |  |
+| `message` | `string` | Yes |  |
+| `timestamp` | `int` | Yes |  |
 
 ### Operations
 
@@ -108,7 +108,7 @@ iss_location := client.IssLocation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.IssLocation(nil).Load(map[string]any{"id": "iss_location_id"}, nil)
+result, err := client.IssLocation(nil).Load(nil, nil)
 ```
 
 ### Common Methods

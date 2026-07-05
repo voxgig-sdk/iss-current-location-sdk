@@ -25,7 +25,7 @@ IssLocation = Struct.new(
   keyword_init: true
 )
 
-# Match filter for IssLocation#load (any subset of IssLocation fields).
+# Request payload for IssLocation#load.
 #
 # @!attribute [rw] iss_position
 #   @return [Hash, nil]
