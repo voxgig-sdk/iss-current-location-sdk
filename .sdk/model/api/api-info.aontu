@@ -15,9 +15,9 @@ main: {
           url: "http://api.open-notify.org"
         }
       ]
+      summary: "Provides the current location of the International Space Station including latitude, longitude, and timestamp."
       title: "ISS Current Location"
       version: "1.0.0"
+      website: "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
     }
   }
-}
-

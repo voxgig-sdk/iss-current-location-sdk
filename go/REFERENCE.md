@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## IssLocationEntity
 
 ```go
-iss_location := client.IssLocation(nil)
+issLocation := client.IssLocation(nil)
+fmt.Println(issLocation.GetName()) // "iss_location"
 ```
 
 ### Fields
@@ -109,6 +110,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.IssLocation(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

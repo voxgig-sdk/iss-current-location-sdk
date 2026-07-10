@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single isslocation — the value is the loaded record.
-    isslocation, err := client.IssLocation(nil).Load(nil, nil)
+    // Load a single issLocation — the value is the loaded record.
+    issLocation, err := client.IssLocation(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(isslocation)
+    fmt.Println(issLocation)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-isslocation, err := client.IssLocation(nil).Load(
+issLocation, err := client.IssLocation(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(isslocation) // the returned mock data
+fmt.Println(issLocation) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    isslocation, err := client.IssLocation(nil).Load(nil, nil)
+    issLocation, err := client.IssLocation(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // isslocation is the returned record
+    // issLocation is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -273,7 +273,7 @@ API path: `/iss-now.json`
 
 ### IssLocation
 
-Create an instance: `iss_location := client.IssLocation(nil)`
+Create an instance: `issLocation := client.IssLocation(nil)`
 
 #### Operations
 
@@ -292,11 +292,11 @@ Create an instance: `iss_location := client.IssLocation(nil)`
 #### Example: Load
 
 ```go
-iss_location, err := client.IssLocation(nil).Load(nil, nil)
+issLocation, err := client.IssLocation(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(iss_location) // the loaded record
+fmt.Println(issLocation) // the loaded record
 ```
 
 
