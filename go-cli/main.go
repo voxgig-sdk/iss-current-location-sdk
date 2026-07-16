@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewIssCurrentLocationSDK(nil)
+	// Configure from the environment: ISS_CURRENT_LOCATION_APIKEY carries the API key and
+	// ISS_CURRENT_LOCATION_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("ISS_CURRENT_LOCATION_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("ISS_CURRENT_LOCATION_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewIssCurrentLocationSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
