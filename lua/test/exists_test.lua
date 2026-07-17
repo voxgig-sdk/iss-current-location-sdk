@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- IssCurrentLocation SDK exists test
 
 local sdk = require("iss-current-location_sdk")
 
