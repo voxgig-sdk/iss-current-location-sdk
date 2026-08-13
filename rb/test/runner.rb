@@ -23,8 +23,8 @@ module IssCurrentLocationTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ISSCURRENTLOCATION_TEST_LIVE")
-    override = getenv("ISSCURRENTLOCATION_TEST_OVERRIDE")
+    live = getenv("ISS_CURRENT_LOCATION_TEST_LIVE")
+    override = getenv("ISS_CURRENT_LOCATION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module IssCurrentLocationTestRunner
       end
     end
 
-    explain = getenv("ISSCURRENTLOCATION_TEST_EXPLAIN")
-    m["ISSCURRENTLOCATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ISS_CURRENT_LOCATION_TEST_EXPLAIN")
+    m["ISS_CURRENT_LOCATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

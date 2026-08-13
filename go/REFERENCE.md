@@ -98,9 +98,8 @@ fmt.Println(issLocation.GetName()) // "iss_location"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | `map[string]any` | Yes |  |
-| `message` | `string` | Yes |  |
-| `timestamp` | `int` | Yes |  |
+| `latitude` | `string` | Yes |  |
+| `longitude` | `string` | Yes |  |
 
 ### Operations
 

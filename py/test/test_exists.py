@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# IssCurrentLocation SDK exists test
 
 import pytest
 from isscurrentlocation_sdk import IssCurrentLocationSDK

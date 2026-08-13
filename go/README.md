@@ -258,9 +258,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"iss_position"` |  |
-| `"message"` |  |
-| `"timestamp"` |  |
+| `"latitude"` |  |
+| `"longitude"` |  |
 
 Operations: Load.
 
@@ -285,9 +284,8 @@ Create an instance: `issLocation := client.IssLocation(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `iss_position` | `map[string]any` |  |
-| `message` | `string` |  |
-| `timestamp` | `int` |  |
+| `latitude` | `string` |  |
+| `longitude` | `string` |  |
 
 #### Example: Load
 

@@ -90,9 +90,8 @@ local iss_location = client:IssLocation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | `table` | Yes |  |
-| `message` | `string` | Yes |  |
-| `timestamp` | `number` | Yes |  |
+| `latitude` | `string` | Yes |  |
+| `longitude` | `string` | Yes |  |
 
 ### Operations
 

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'IssCurrentLocation',
   }
 
 
@@ -56,24 +56,17 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "iss_position",
+          "name": "latitude",
           "req": true,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "message",
+          "name": "longitude",
           "req": true,
           "type": "`$STRING`",
           "index$": 1
-        },
-        {
-          "active": true,
-          "name": "timestamp",
-          "req": true,
-          "type": "`$INTEGER`",
-          "index$": 2
         }
       ],
       "name": "iss_location",
@@ -96,6 +89,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/iss-now.json",
               "parts": [
@@ -108,7 +102,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.iss_position`"
               },
               "index$": 0
             }

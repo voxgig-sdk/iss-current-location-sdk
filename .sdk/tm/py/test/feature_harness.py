@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import IssCurrentLocationControl
-from core.error import IssCurrentLocationError
-from core.result import IssCurrentLocationResult
-from core.spec import IssCurrentLocationSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import IssCurrentLocationControl
+from projectname_sdk.core.error import IssCurrentLocationError
+from projectname_sdk.core.result import IssCurrentLocationResult
+from projectname_sdk.core.spec import IssCurrentLocationSpec
 
 
 # True when this SDK was generated with the named feature.

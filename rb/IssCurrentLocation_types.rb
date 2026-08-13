@@ -10,35 +10,27 @@
 
 # IssLocation entity data model.
 #
-# @!attribute [rw] iss_position
-#   @return [Hash]
-#
-# @!attribute [rw] message
+# @!attribute [rw] latitude
 #   @return [String]
 #
-# @!attribute [rw] timestamp
-#   @return [Integer]
+# @!attribute [rw] longitude
+#   @return [String]
 IssLocation = Struct.new(
-  :iss_position,
-  :message,
-  :timestamp,
+  :latitude,
+  :longitude,
   keyword_init: true
 )
 
 # Request payload for IssLocation#load.
 #
-# @!attribute [rw] iss_position
-#   @return [Hash, nil]
-#
-# @!attribute [rw] message
+# @!attribute [rw] latitude
 #   @return [String, nil]
 #
-# @!attribute [rw] timestamp
-#   @return [Integer, nil]
+# @!attribute [rw] longitude
+#   @return [String, nil]
 IssLocationLoadMatch = Struct.new(
-  :iss_position,
-  :message,
-  :timestamp,
+  :latitude,
+  :longitude,
   keyword_init: true
 )
 

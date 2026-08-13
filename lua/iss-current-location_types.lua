@@ -7,14 +7,12 @@
 -- edit by hand.
 
 ---@class IssLocation
----@field iss_position table
----@field message string
----@field timestamp number
+---@field latitude string
+---@field longitude string
 
 ---@class IssLocationLoadMatch
----@field iss_position? table
----@field message? string
----@field timestamp? number
+---@field latitude? string
+---@field longitude? string
 
 local M = {}
 

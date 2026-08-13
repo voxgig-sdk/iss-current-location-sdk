@@ -225,9 +225,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `iss_position` |  |
-| `message` |  |
-| `timestamp` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: Load.
 
@@ -252,9 +251,8 @@ Create an instance: `local iss_location = client:IssLocation(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `iss_position` | `table` |  |
-| `message` | `string` |  |
-| `timestamp` | `number` |  |
+| `latitude` | `string` |  |
+| `longitude` | `string` |  |
 
 #### Example: Load
 

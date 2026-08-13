@@ -92,9 +92,8 @@ $iss_location = $client->IssLocation();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | `array` | Yes |  |
-| `message` | `string` | Yes |  |
-| `timestamp` | `int` | Yes |  |
+| `latitude` | `string` | Yes |  |
+| `longitude` | `string` | Yes |  |
 
 ### Operations
 

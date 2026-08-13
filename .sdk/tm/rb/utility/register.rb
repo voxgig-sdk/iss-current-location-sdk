@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ IssCurrentLocationUtility.registrar = ->(u) {
   u.prepare_params = IssCurrentLocationUtilities::PrepareParams
   u.prepare_path = IssCurrentLocationUtilities::PreparePath
   u.prepare_query = IssCurrentLocationUtilities::PrepareQuery
+  u.graphql_body = IssCurrentLocationUtilities::GraphqlBody
+  u.graphql_errors = IssCurrentLocationUtilities::GraphqlErrors
   u.result_basic = IssCurrentLocationUtilities::ResultBasic
   u.result_body = IssCurrentLocationUtilities::ResultBody
   u.result_headers = IssCurrentLocationUtilities::ResultHeaders

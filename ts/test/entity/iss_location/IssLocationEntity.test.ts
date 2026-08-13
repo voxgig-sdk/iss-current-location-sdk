@@ -26,8 +26,8 @@ import {
 describe('IssLocationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ISSCURRENTLOCATION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ISSCURRENTLOCATION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ISS_CURRENT_LOCATION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ISS_CURRENT_LOCATION_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IssCurrentLocationSDK.test()
@@ -62,7 +62,7 @@ describe('IssLocationEntity', async () => {
     // LOAD
     const iss_location_ref01_ent = client.IssLocation()
     const iss_location_ref01_match_dt0: any = {}
-    const iss_location_ref01_data_dt0 = await iss_location_ref01_ent.load(iss_location_ref01_match_dt0)
+    const iss_location_ref01_data_dt0 = (await iss_location_ref01_ent.load(iss_location_ref01_match_dt0)).data()
     assert(null != iss_location_ref01_data_dt0)
 
 

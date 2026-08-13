@@ -27,24 +27,17 @@ module IssCurrentLocationConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "iss_position",
+              "name" => "latitude",
               "req" => true,
-              "type" => "`$OBJECT`",
+              "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "message",
+              "name" => "longitude",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 1,
-            },
-            {
-              "active" => true,
-              "name" => "timestamp",
-              "req" => true,
-              "type" => "`$INTEGER`",
-              "index$" => 2,
             },
           ],
           "name" => "iss_location",
@@ -67,6 +60,7 @@ module IssCurrentLocationConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/iss-now.json",
                   "parts" => [
@@ -79,7 +73,7 @@ module IssCurrentLocationConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.iss_position`",
                   },
                   "index$" => 0,
                 },

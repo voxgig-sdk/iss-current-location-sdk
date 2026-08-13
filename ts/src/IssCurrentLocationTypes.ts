@@ -6,14 +6,12 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface IssLocation {
-  iss_position: Record<string, any>
-  message: string
-  timestamp: number
+  latitude: string
+  longitude: string
 }
 
 export interface IssLocationLoadMatch {
-  iss_position?: Record<string, any>
-  message?: string
-  timestamp?: number
+  latitude?: string
+  longitude?: string
 }
 

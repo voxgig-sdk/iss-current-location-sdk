@@ -116,9 +116,8 @@ const iss_location = client.IssLocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | `Record<string, any>` | Yes |  |
-| `message` | `string` | Yes |  |
-| `timestamp` | `number` | Yes |  |
+| `latitude` | `string` | Yes |  |
+| `longitude` | `string` | Yes |  |
 
 ### Operations
 

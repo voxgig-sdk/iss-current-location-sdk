@@ -26,24 +26,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "iss_position",
+						"name": "latitude",
 						"req": true,
-						"type": "`$OBJECT`",
+						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "message",
+						"name": "longitude",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 1,
-					},
-					map[string]any{
-						"active": true,
-						"name": "timestamp",
-						"req": true,
-						"type": "`$INTEGER`",
-						"index$": 2,
 					},
 				},
 				"name": "iss_location",
@@ -66,6 +59,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/iss-now.json",
 								"parts": []any{
@@ -78,12 +72,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.iss_position`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

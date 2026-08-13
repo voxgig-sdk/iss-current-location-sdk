@@ -59,11 +59,11 @@ def iss_location_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID" => {},
-    "ISSCURRENTLOCATION_TEST_LIVE" => "FALSE",
+    "ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID" => {},
+    "ISS_CURRENT_LOCATION_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ISSCURRENTLOCATION_TEST_LIVE"] == "TRUE"
+  live = env["ISS_CURRENT_LOCATION_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

@@ -15,16 +15,14 @@ declare(strict_types=1);
 /** IssLocation entity data model. */
 class IssLocation
 {
-    public array $iss_position;
-    public string $message;
-    public int $timestamp;
+    public string $latitude;
+    public string $longitude;
 }
 
 /** Request payload for IssLocation#load. */
 class IssLocationLoadMatch
 {
-    public ?array $iss_position = null;
-    public ?string $message = null;
-    public ?int $timestamp = null;
+    public ?string $latitude = null;
+    public ?string $longitude = null;
 }
 

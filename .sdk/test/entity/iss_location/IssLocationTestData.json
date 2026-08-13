@@ -2,21 +2,18 @@
   "existing": {
     "iss_location": {
       "ISS_LOCATION00": {
-        "iss_position": {},
-        "message": "s1f",
-        "timestamp": "s20",
+        "latitude": "s14",
+        "longitude": "s15",
         "id": "ISS_LOCATION00"
       },
       "ISS_LOCATION01": {
-        "iss_position": {},
-        "message": "s3d",
-        "timestamp": "s3e",
+        "latitude": "s28",
+        "longitude": "s29",
         "id": "ISS_LOCATION01"
       },
       "ISS_LOCATION02": {
-        "iss_position": {},
-        "message": "s5b",
-        "timestamp": "s5c",
+        "latitude": "s3c",
+        "longitude": "s3d",
         "id": "ISS_LOCATION02"
       }
     }
@@ -24,9 +21,8 @@
   "new": {
     "iss_location": {
       "iss_location_ref01": {
-        "iss_position": {},
-        "message": "s79",
-        "timestamp": "s7a"
+        "latitude": "s50",
+        "longitude": "s51"
       }
     }
   }

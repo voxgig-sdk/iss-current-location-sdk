@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = IssCurrentLocationSDK.test()
 
 const isslocation = await client.IssLocation().load()
-// isslocation is a bare entity populated with mock response data
+// isslocation is the entity, populated with mock response data
+// — call isslocation.data() for the record itself
 console.log(isslocation)
 ```
 
@@ -284,9 +285,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `iss_position` |  |
-| `message` |  |
-| `timestamp` |  |
+| `latitude` |  |
+| `longitude` |  |
 
 Operations: load.
 
@@ -311,9 +311,8 @@ Create an instance: `const iss_location = client.IssLocation()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `iss_position` | `Record<string, any>` |  |
-| `message` | `string` |  |
-| `timestamp` | `number` |  |
+| `latitude` | `string` |  |
+| `longitude` | `string` |  |
 
 #### Example: Load
 

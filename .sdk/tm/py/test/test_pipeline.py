@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import IssCurrentLocationSDK
-from core.error import IssCurrentLocationError
-from core.result import IssCurrentLocationResult
-from core.response import IssCurrentLocationResponse
-from core.spec import IssCurrentLocationSpec
-from feature.base_feature import IssCurrentLocationBaseFeature
+from projectname_sdk.core.error import IssCurrentLocationError
+from projectname_sdk.core.result import IssCurrentLocationResult
+from projectname_sdk.core.response import IssCurrentLocationResponse
+from projectname_sdk.core.spec import IssCurrentLocationSpec
+from projectname_sdk.feature.base_feature import IssCurrentLocationBaseFeature
 
 
 def _client():

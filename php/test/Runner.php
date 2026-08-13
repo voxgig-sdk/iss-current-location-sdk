@@ -43,8 +43,8 @@ class IssCurrentLocationTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ISSCURRENTLOCATION_TEST_LIVE');
-        $override = self::getenv('ISSCURRENTLOCATION_TEST_OVERRIDE');
+        $live = self::getenv('ISS_CURRENT_LOCATION_TEST_LIVE');
+        $override = self::getenv('ISS_CURRENT_LOCATION_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class IssCurrentLocationTestRunner
             }
         }
 
-        $explain = self::getenv('ISSCURRENTLOCATION_TEST_EXPLAIN');
+        $explain = self::getenv('ISS_CURRENT_LOCATION_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ISSCURRENTLOCATION_TEST_EXPLAIN'] = $explain;
+            $m['ISS_CURRENT_LOCATION_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

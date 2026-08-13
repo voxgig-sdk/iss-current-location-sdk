@@ -8,6 +8,7 @@ guide: {
   entity: iss_location: {
     path: "/iss-now.json": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.iss_position`")|top
     }
   }
 

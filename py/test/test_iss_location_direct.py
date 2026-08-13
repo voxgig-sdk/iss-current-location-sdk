@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from isscurrentlocation_sdk.utility.voxgig_struct import voxgig_struct as vs
 from isscurrentlocation_sdk import IssCurrentLocationSDK
-from core import helpers
+from isscurrentlocation_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _iss_location_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ISSCURRENTLOCATION_TEST_ISS_LOCATION_ENTID": {},
-        "ISSCURRENTLOCATION_TEST_LIVE": "FALSE",
+        "ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID": {},
+        "ISS_CURRENT_LOCATION_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ISSCURRENTLOCATION_TEST_LIVE") == "TRUE"
+    live = env.get("ISS_CURRENT_LOCATION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

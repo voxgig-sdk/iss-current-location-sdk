@@ -6,19 +6,14 @@ main: kit: entity: iss_location: {
 
   fields: [
     {
-      name: "iss_position"
-      req: true
-      type: "`$OBJECT`"
-    }
-    {
-      name: "message"
+      name: "latitude"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "timestamp"
+      name: "longitude"
       req: true
-      type: "`$INTEGER`"
+      type: "`$STRING`"
     }
   ]
 
@@ -51,7 +46,7 @@ main: kit: entity: iss_location: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.iss_position`"
           }
         }
       ]

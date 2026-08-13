@@ -93,9 +93,8 @@ iss_location = client.IssLocation
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `iss_position` | `Hash` | Yes |  |
-| `message` | `String` | Yes |  |
-| `timestamp` | `Integer` | Yes |  |
+| `latitude` | `String` | Yes |  |
+| `longitude` | `String` | Yes |  |
 
 ### Operations
 
