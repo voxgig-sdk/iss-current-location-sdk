@@ -28,7 +28,7 @@ class IssCurrentLocationSDK
     utility = IssCurrentLocationUtility.new
     @_utility = utility
 
-    config = IssCurrentLocationConfig.make_config
+    config = IssCurrentLocationConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

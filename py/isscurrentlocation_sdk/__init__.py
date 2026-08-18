@@ -23,8 +23,8 @@ class IssCurrentLocationSDK:
         utility = IssCurrentLocationUtility()
         self._utility = utility
 
-        from isscurrentlocation_sdk.config import make_config
-        config = make_config()
+        from isscurrentlocation_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

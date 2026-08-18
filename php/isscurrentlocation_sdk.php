@@ -40,7 +40,7 @@ class IssCurrentLocationSDK
         $utility = new IssCurrentLocationUtility();
         $this->_utility = $utility;
 
-        $config = IssCurrentLocationConfig::make_config();
+        $config = IssCurrentLocationConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

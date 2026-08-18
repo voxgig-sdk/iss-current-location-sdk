@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'http://api.open-notify.org',
+    base: "http://api.open-notify.org",
 
     headers: {
       "content-type": "application/json"
@@ -55,18 +55,14 @@ class Config {
     "iss_location": {
       "fields": [
         {
-          "active": true,
           "name": "latitude",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "longitude",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "iss_location",
@@ -76,15 +72,12 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "callback",
                     "orig": "callback",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -103,11 +96,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.iss_position`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
