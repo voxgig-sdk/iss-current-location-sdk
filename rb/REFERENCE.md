@@ -93,8 +93,8 @@ iss_location = client.IssLocation
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `String` | Yes |  |
-| `longitude` | `String` | Yes |  |
+| `latitude` | `String` | Yes | Latitude coordinate of the ISS |
+| `longitude` | `String` | Yes | Longitude coordinate of the ISS |
 
 ### Operations
 

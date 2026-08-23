@@ -19,6 +19,9 @@ module IssCurrentLocationConfig
     {
       "main" => {
         "name" => "IssCurrentLocation",
+        "slug" => "iss-current-location",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -42,11 +45,13 @@ module IssCurrentLocationConfig
             {
               "name" => "latitude",
               "req" => true,
+              "short" => "Latitude coordinate of the ISS",
               "type" => "`$STRING`",
             },
             {
               "name" => "longitude",
               "req" => true,
+              "short" => "Longitude coordinate of the ISS",
               "type" => "`$STRING`",
             },
           ],

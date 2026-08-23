@@ -8,11 +8,13 @@ main: kit: entity: iss_location: {
     {
       name: "latitude"
       req: true
+      short: "Latitude coordinate of the ISS"
       type: "`$STRING`"
     }
     {
       name: "longitude"
       req: true
+      short: "Longitude coordinate of the ISS"
       type: "`$STRING`"
     }
   ]

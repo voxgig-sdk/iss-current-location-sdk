@@ -235,8 +235,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
+| `latitude` | Latitude coordinate of the ISS |
+| `longitude` | Longitude coordinate of the ISS |
 
 Operations: Load.
 
@@ -261,8 +261,8 @@ Create an instance: `iss_location = client.IssLocation`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `String` |  |
-| `longitude` | `String` |  |
+| `latitude` | `String` | Latitude coordinate of the ISS |
+| `longitude` | `String` | Longitude coordinate of the ISS |
 
 #### Example: Load
 

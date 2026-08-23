@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "IssCurrentLocation",
+			"slug": "iss-current-location",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,11 +37,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "latitude",
 						"req": true,
+						"short": "Latitude coordinate of the ISS",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "longitude",
 						"req": true,
+						"short": "Longitude coordinate of the ISS",
 						"type": "`$STRING`",
 					},
 				},

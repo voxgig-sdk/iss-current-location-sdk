@@ -36,12 +36,14 @@
               "active": true,
               "name": "latitude",
               "req": true,
+              "short": "Latitude coordinate of the ISS",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": true,
+              "short": "Longitude coordinate of the ISS",
               "type": "`$STRING`"
             }
           ],

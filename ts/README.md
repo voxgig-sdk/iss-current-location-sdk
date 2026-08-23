@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,8 +285,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
+| `latitude` | Latitude coordinate of the ISS |
+| `longitude` | Longitude coordinate of the ISS |
 
 Operations: load.
 
@@ -311,8 +311,8 @@ Create an instance: `const iss_location = client.IssLocation()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
+| `latitude` | `string` | Latitude coordinate of the ISS |
+| `longitude` | `string` | Longitude coordinate of the ISS |
 
 #### Example: Load
 

@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "IssCurrentLocation",
+            "slug": "iss-current-location",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,11 +54,13 @@ def make_config():
           {
             "name": "latitude",
             "req": True,
+            "short": "Latitude coordinate of the ISS",
             "type": "`$STRING`",
           },
           {
             "name": "longitude",
             "req": True,
+            "short": "Longitude coordinate of the ISS",
             "type": "`$STRING`",
           },
         ],

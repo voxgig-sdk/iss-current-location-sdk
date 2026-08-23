@@ -6,7 +6,7 @@ The Golang SDK for the IssCurrentLocation API — an entity-oriented client usin
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.IssLocation(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,8 +258,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"latitude"` |  |
-| `"longitude"` |  |
+| `"latitude"` | Latitude coordinate of the ISS |
+| `"longitude"` | Longitude coordinate of the ISS |
 
 Operations: Load.
 
@@ -284,8 +284,8 @@ Create an instance: `issLocation := client.IssLocation(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
+| `latitude` | `string` | Latitude coordinate of the ISS |
+| `longitude` | `string` | Longitude coordinate of the ISS |
 
 #### Example: Load
 

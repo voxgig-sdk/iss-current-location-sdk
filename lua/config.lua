@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "IssCurrentLocation",
+      slug = "iss-current-location",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,11 +33,13 @@ local function make_config()
           {
             ["name"] = "latitude",
             ["req"] = true,
+            ["short"] = "Latitude coordinate of the ISS",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "longitude",
             ["req"] = true,
+            ["short"] = "Longitude coordinate of the ISS",
             ["type"] = "`$STRING`",
           },
         },

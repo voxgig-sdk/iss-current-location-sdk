@@ -245,8 +245,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
+| `latitude` | Latitude coordinate of the ISS |
+| `longitude` | Longitude coordinate of the ISS |
 
 Operations: Load.
 
@@ -271,8 +271,8 @@ Create an instance: `$iss_location = $client->IssLocation();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
+| `latitude` | `string` | Latitude coordinate of the ISS |
+| `longitude` | `string` | Longitude coordinate of the ISS |
 
 #### Example: Load
 

@@ -116,8 +116,8 @@ const iss_location = client.IssLocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `string` | Yes |  |
-| `longitude` | `string` | Yes |  |
+| `latitude` | `string` | Yes | Latitude coordinate of the ISS |
+| `longitude` | `string` | Yes | Longitude coordinate of the ISS |
 
 ### Operations
 

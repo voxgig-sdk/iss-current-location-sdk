@@ -241,8 +241,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
+| `latitude` | Latitude coordinate of the ISS |
+| `longitude` | Longitude coordinate of the ISS |
 
 Operations: Load.
 
@@ -267,8 +267,8 @@ Create an instance: `iss_location = client.IssLocation()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `str` |  |
-| `longitude` | `str` |  |
+| `latitude` | `str` | Latitude coordinate of the ISS |
+| `longitude` | `str` | Longitude coordinate of the ISS |
 
 #### Example: Load
 

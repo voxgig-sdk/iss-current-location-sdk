@@ -33,6 +33,9 @@ class IssCurrentLocationConfig
         return [
             "main" => [
                 "name" => "IssCurrentLocation",
+                "slug" => "iss-current-location",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -56,11 +59,13 @@ class IssCurrentLocationConfig
             [
               'name' => 'latitude',
               'req' => true,
+              'short' => 'Latitude coordinate of the ISS',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'longitude',
               'req' => true,
+              'short' => 'Longitude coordinate of the ISS',
               'type' => '`$STRING`',
             ],
           ],
