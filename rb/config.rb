@@ -28,6 +28,7 @@ module IssCurrentLocationConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
