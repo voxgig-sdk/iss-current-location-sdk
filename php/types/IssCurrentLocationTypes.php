@@ -22,7 +22,6 @@ class IssLocation
 /** Request payload for IssLocation#load. */
 class IssLocationLoadMatch
 {
-    public ?string $latitude = null;
-    public ?string $longitude = null;
+    public ?string $callback = null;
 }
 

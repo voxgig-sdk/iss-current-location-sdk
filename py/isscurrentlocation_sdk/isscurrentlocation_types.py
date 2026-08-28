@@ -22,5 +22,4 @@ class IssLocation(TypedDict):
 
 
 class IssLocationLoadMatch(TypedDict, total=False):
-    latitude: str
-    longitude: str
+    callback: str

@@ -11,7 +11,6 @@ export interface IssLocation {
 }
 
 export interface IssLocationLoadMatch {
-  latitude?: string
-  longitude?: string
+  callback?: string
 }
 

@@ -11,8 +11,7 @@
 ---@field longitude string
 
 ---@class IssLocationLoadMatch
----@field latitude? string
----@field longitude? string
+---@field callback? string
 
 local M = {}
 

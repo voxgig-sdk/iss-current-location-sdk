@@ -20,8 +20,7 @@ type IssLocation struct {
 
 // IssLocationLoadMatch is the typed request payload for IssLocation.LoadTyped.
 type IssLocationLoadMatch struct {
-	Latitude *string `json:"latitude,omitempty"`
-	Longitude *string `json:"longitude,omitempty"`
+	Callback *string `json:"callback,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

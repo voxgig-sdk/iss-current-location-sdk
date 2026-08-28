@@ -23,14 +23,10 @@ IssLocation = Struct.new(
 
 # Request payload for IssLocation#load.
 #
-# @!attribute [rw] latitude
-#   @return [String, nil]
-#
-# @!attribute [rw] longitude
+# @!attribute [rw] callback
 #   @return [String, nil]
 IssLocationLoadMatch = Struct.new(
-  :latitude,
-  :longitude,
+  :callback,
   keyword_init: true
 )
 
