@@ -76,8 +76,10 @@ module IssCurrentLocationConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/iss-now.json",
-                  "parts" => [
-                    "iss-now.json",
+                  "segments" => [
+                    {
+                      "lit" => "iss-now.json",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -88,6 +90,9 @@ module IssCurrentLocationConfig
                     "req" => "`reqdata`",
                     "res" => "`body.iss_position`",
                   },
+                  "parts" => [
+                    "iss-now.json",
+                  ],
                 },
               ],
             },

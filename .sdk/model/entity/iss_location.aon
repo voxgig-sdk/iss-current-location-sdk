@@ -38,8 +38,10 @@ main: kit: entity: iss_location: {
           }
           method: "GET"
           orig: "/iss-now.json"
-          parts: [
-            "iss-now.json"
+          segments: [
+            {
+              lit: "iss-now.json"
+            }
           ]
           select: {
             exist: [

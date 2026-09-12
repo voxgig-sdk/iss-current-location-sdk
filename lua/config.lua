@@ -64,8 +64,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/iss-now.json",
-                ["parts"] = {
-                  "iss-now.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "iss-now.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -75,6 +77,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.iss_position`",
+                },
+                ["parts"] = {
+                  "iss-now.json",
                 },
               },
             },
