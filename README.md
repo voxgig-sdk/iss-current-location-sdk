@@ -105,7 +105,7 @@ local result, err = client:IssLocation():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
+| TypeScript | `@voxgig-sdk/iss-current-location-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
 | Python | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
 | PHP | `voxgig-sdk/iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/iss-current-location-sdk/go` | `go get github.com/voxgig-sdk/iss-current-location-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:IssLocation():load()
 ### TypeScript
 
 ```ts
-import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
+import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location-sdk'
 
 const client = new IssCurrentLocationSDK()
 

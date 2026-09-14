@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
+import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location-sdk'
 
 const client = new IssCurrentLocationSDK()
 ```
@@ -403,7 +403,7 @@ iss-current-location/
 Import the SDK from the package root:
 
 ```ts
-import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location'
+import { IssCurrentLocationSDK } from '@voxgig-sdk/iss-current-location-sdk'
 ```
 
 ### Entity state
