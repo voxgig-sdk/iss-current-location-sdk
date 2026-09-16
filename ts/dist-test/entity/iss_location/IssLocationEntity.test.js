@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ISS_CURRENT_LOCATION_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'iss_location.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'iss_location.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "latitude", "req": true, "short": "Latitude coordinate of the ISS", "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "longitude", "req": true, "short": "Longitude coordinate of the ISS", "type": "`$STRING`", "index$": 1 }], "name": "iss_location", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "callback", "orig": "callback", "reqd": false, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /iss-now.json", "json": "{\"operationId\":\"getIssLocation\",\"parameters\":[{\"description\":\"Optional JSONP callback function name for cross-domain requests\",\"in\":\"query\",\"name\":\"callback\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"iss_position\":{\"latitude\":\"45.0000\",\"longitude\":\"-122.0000\"},\"message\":\"success\",\"timestamp\":1609459200},\"schema\":{\"properties\":{\"iss_position\":{\"description\":\"Current position of the ISS\",\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the ISS\",\"example\":\"45.0000\",\"type\":\"string\"},\"longitude\":{\"description\":\"Longitude coordinate of the ISS\",\"example\":\"-122.0000\",\"type\":\"string\"}},\"required\":[\"latitude\",\"longitude\"],\"type\":\"object\"},\"message\":{\"description\":\"Status message indicating success\",\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Unix timestamp of when the location was recorded\",\"example\":1609459200,\"type\":\"integer\"}},\"required\":[\"message\",\"timestamp\",\"iss_position\"],\"type\":\"object\"}}},\"description\":\"Successful response with current ISS location\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/iss-now.json", "segments": [{ "lit": "iss-now.json" }], "select": { "exist": ["callback"] }, "transform": { "req": "`reqdata`", "res": "`body.iss_position`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "iss_location", "name__orig": "iss_location", "Name": "IssLocation", "name_": "iss_location", "name-": "iss-location", "NAME": "ISS_LOCATION", "index$": 0 }, { "active": true, "entity": "iss_location", "key$": "BasicIssLocationFlow", "kind": "basic", "name": "BasicIssLocationFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "iss_location_ref01", "srcdatavar": "iss_location_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-iss_location_ref01" } }], "index$": 0 }] }, 'IssLocation');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID': idmap,
         'ISS_CURRENT_LOCATION_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID'];
     const live = 'TRUE' === env.ISS_CURRENT_LOCATION_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['ISS_CURRENT_LOCATION_TEST_ISS_LOCATION_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.IssCurrentLocationSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -126,7 +124,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -138,7 +137,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.ISS_CURRENT_LOCATION_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

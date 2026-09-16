@@ -36,6 +36,12 @@ main: kit: entity: iss_location: {
               }
             ]
           }
+          contract: {
+            id: "GET /iss-now.json"
+            json: "{\"operationId\":\"getIssLocation\",\"parameters\":[{\"description\":\"Optional JSONP callback function name for cross-domain requests\",\"in\":\"query\",\"name\":\"callback\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"iss_position\":{\"latitude\":\"45.0000\",\"longitude\":\"-122.0000\"},\"message\":\"success\",\"timestamp\":1609459200},\"schema\":{\"properties\":{\"iss_position\":{\"description\":\"Current position of the ISS\",\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate of the ISS\",\"example\":\"45.0000\",\"type\":\"string\"},\"longitude\":{\"description\":\"Longitude coordinate of the ISS\",\"example\":\"-122.0000\",\"type\":\"string\"}},\"required\":[\"latitude\",\"longitude\"],\"type\":\"object\"},\"message\":{\"description\":\"Status message indicating success\",\"example\":\"success\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Unix timestamp of when the location was recorded\",\"example\":1609459200,\"type\":\"integer\"}},\"required\":[\"message\",\"timestamp\",\"iss_position\"],\"type\":\"object\"}}},\"description\":\"Successful response with current ISS location\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Error message\",\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/iss-now.json"
           segments: [

@@ -4,7 +4,10 @@ declare(strict_types=1);
 // IssCurrentLocation SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class IssCurrentLocationFeatures
@@ -14,8 +17,14 @@ class IssCurrentLocationFeatures
         switch ($name) {
             case "base":
                 return new IssCurrentLocationBaseFeature();
+            case "ratelimit":
+                return new IssCurrentLocationRatelimitFeature();
+            case "retry":
+                return new IssCurrentLocationRetryFeature();
             case "test":
                 return new IssCurrentLocationTestFeature();
+            case "timeout":
+                return new IssCurrentLocationTimeoutFeature();
             default:
                 return new IssCurrentLocationBaseFeature();
         }
@@ -31,7 +40,10 @@ class IssCurrentLocationFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

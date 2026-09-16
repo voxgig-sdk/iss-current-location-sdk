@@ -1,12 +1,18 @@
 # IssCurrentLocation SDK feature factory
 
 from isscurrentlocation_sdk.feature.base_feature import IssCurrentLocationBaseFeature
+from isscurrentlocation_sdk.feature.ratelimit_feature import IssCurrentLocationRatelimitFeature
+from isscurrentlocation_sdk.feature.retry_feature import IssCurrentLocationRetryFeature
 from isscurrentlocation_sdk.feature.test_feature import IssCurrentLocationTestFeature
+from isscurrentlocation_sdk.feature.timeout_feature import IssCurrentLocationTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: IssCurrentLocationBaseFeature(),
+    "ratelimit": lambda: IssCurrentLocationRatelimitFeature(),
+    "retry": lambda: IssCurrentLocationRetryFeature(),
     "test": lambda: IssCurrentLocationTestFeature(),
+    "timeout": lambda: IssCurrentLocationTimeoutFeature(),
 }
 
 
