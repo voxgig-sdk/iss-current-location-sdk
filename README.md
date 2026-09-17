@@ -105,12 +105,12 @@ local result, err = client:IssLocation():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/iss-current-location-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
-| Python | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
-| PHP | `voxgig-sdk/iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
+| TypeScript | `@voxgig-sdk/iss-current-location-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/tags) |
+| Python | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/tags) |
+| PHP | `voxgig-sdk/iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/iss-current-location-sdk/go` | `go get github.com/voxgig-sdk/iss-current-location-sdk/go@latest` |
-| Ruby | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
-| Lua | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/releases) |
+| Ruby | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/tags) |
+| Lua | `voxgig-sdk-iss-current-location` | publish pending — [install from git tag](https://github.com/voxgig-sdk/iss-current-location-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/iss-current-location-sdk/go-cli` | `go install github.com/voxgig-sdk/iss-current-location-sdk/go-cli/cmd/iss-current-location@latest` |
 | Go MCP server | `github.com/voxgig-sdk/iss-current-location-sdk/go-mcp` | `go get github.com/voxgig-sdk/iss-current-location-sdk/go-mcp@latest` |
 

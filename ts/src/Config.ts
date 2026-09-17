@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      iss_location: {
-      },
-
+        iss_location: {
+        },
+  
     }
   }
 
